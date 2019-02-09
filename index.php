@@ -15,8 +15,30 @@ function rfiles($dir) {
     return $files;
 }
 
-$files = rfiles(".");
+$endpoint = $_SERVER["REQUEST_URI"];
+$endpoint = str_replace(['..'], '', $endpoint);
+$endpoint = ltrim($endpoint, '/');
+
+if ($endpoint === "") {
+    $endpoint = ".";
+}
+
+if (!file_exists($endpoint)) {
+    header("HTTP/1.0 404 Not Found");
+    echo "404";
+    return;
+}   
+
+if (is_file($endpoint)) {
+    echo file_get_contents($endpoint);
+    return;
+}
+
+$files = rfiles($endpoint);
 
 foreach ($files as $file): ?>
- <a href="<?php echo $file; ?>"><?php echo $file; ?></a><br />
-<?php endforeach;
+    <a href="<?php echo $file; ?>">
+        <?php echo $file; ?>
+    </a>
+    <br />
+<?php endforeach;   
