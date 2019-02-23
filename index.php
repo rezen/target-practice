@@ -19,6 +19,27 @@ $endpoint = $_SERVER["REQUEST_URI"];
 $endpoint = str_replace(['..'], '', $endpoint);
 $endpoint = ltrim($endpoint, '/');
 
+if (strpos($endpoint, "api") !== false) {
+  header('Content-Type: application/json');
+  echo json_encode([
+      [
+        'id' => 27,
+        'name' => 'example',
+        'meta' => [ 
+           'source' => 'db',
+           'details' => [
+             'password' => 'password123',
+           ],
+        ],
+      ],
+      [
+         'id' => 29,
+         'ssn' => '00-000-0000'
+      ]
+  ]);
+  return;
+}
+
 if ($endpoint === "") {
     $endpoint = ".";
 }
@@ -33,6 +54,7 @@ if (is_file($endpoint)) {
     echo file_get_contents($endpoint);
     return;
 }
+
 
 $files = rfiles($endpoint);
 
