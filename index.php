@@ -50,6 +50,7 @@ if (!file_exists($endpoint)) {
     return;
 }   
 
+print_r(getallheaders());
 if (is_file($endpoint)) {
     echo file_get_contents($endpoint);
     return;
