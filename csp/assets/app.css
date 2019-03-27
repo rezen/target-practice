@@ -1,0 +1,28 @@
+* {
+  font-family: Arial, sans-serif;
+}
+
+style {
+  display: block;
+  background-color: #eee;
+  padding: 20px;
+  font-family: monospace;
+}
+
+script {
+  display: block;
+  background-color: #eee;
+  padding: 20px;
+  font-family: monospace;
+}
+
+.google-font{
+  font-family: 'Alfa Slab One';
+}
+
+@import url('https://fonts.googleapis.com/css?family=Nixie+One');
+
+
+.google-font-too{
+  font-family: 'Nixie One';
+}
