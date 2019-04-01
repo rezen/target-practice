@@ -21,7 +21,7 @@ function fixScript($element, $nonce) {
         '</script>'
       ];
       $element['script']['output'] = implode("\n", $lines);
-      $element['script']['source'] = trim(str_replace("&gt;&lt;", "&gt;\n&lt;", htmlentities($element['script']['output']))); 
+      $element['script']['source'] = htmlentities($element['script']['output']);
     } else  if (strpos(@$script['src'], '@') !== false) {
       $parts = explode('@', $script['src']);
       $src = $parts[0];

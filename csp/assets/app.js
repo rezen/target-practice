@@ -51,10 +51,31 @@ function evalExample() {
 }
 // end:evalExample
 
+
+// start:cloudflareJquery
+function cloudflareJquery() {
+    jQuery("#script-src-cloudflare").text("Changed using jquery from cloudflare cdn");
+}
+// end:cloudflareJquery
+
+// start:cdnD3
+function cdnD3() {
+    d3.select("#script-src-jsdelivr").text("Changed using d3 from jsdelivr");
+}
+// end:cdnD3
+
 document.addEventListener('DOMContentLoaded', function() {
-    localAjax();
-    try {
-        stripeExample();
-    } catch (e) {}
-    evalExample();
+    [
+        localAjax,
+        cloudflareJquery,
+        stripeExample,
+        evalExample,
+        cdnD3,
+    ].map(function(fn) {
+        try {
+            fn();
+        } catch (e) {
+            console.error(e);
+        }
+    });
 });

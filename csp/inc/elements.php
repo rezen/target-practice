@@ -6,7 +6,6 @@ $elements = [
       'label' => "Inline eval",
       'html' => '<p id="{{ id }}">Original before {{ id }}</p>',
       'script' => [
-        'src'    => '',
         'nonce'  => false,
         'inline' => 'eval("document.getElementById(\'{{ id }}\').textContent=\'[!] Some eval with {{ id }}\'");', 
       ],
@@ -54,7 +53,7 @@ $elements = [
       "label" => "Style with nonce",
       'html' => [
         "<p id='{{ id }}'>Style makes this blue</p>",
-        "<style nonce=\"{{ nonce }}\">#{{ id }}{color: blue;}</style>"
+        "<style nonce=\"{{ nonce }}\">#{{ id }}{color: blue;}#{{ id }}:before{content: 'Changed ';}</style>"
       ],
       'category' => 'style-src',
     ],
@@ -63,7 +62,7 @@ $elements = [
       "label" => "Style without nonce",
       'html' => [
         "<p id='{{ id }}'>Style will make this red</p>",
-        "<style>#{{ id }}{color: red;}</style>"
+        "<style>#{{ id }}{color: red;}#{{ id }}:before{content: 'Changed ';}</style>"
       ],
       'category' => 'style-src',
     ],
@@ -91,6 +90,7 @@ $elements = [
       'id'  => 'external-style',
       'label' => "External style" ,
       'html' => [
+        '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css" />',
         '<i class="fas fa-align-justify"></i>',
         'Font awesome icon, remote style'
       ],
@@ -258,6 +258,31 @@ $elements = [
         "html" => [
             '<embed src="assets/smashing-the-stack.pdf" type="application/pdf" width="400" height="225">',
             '</embed>'
+        ],
+        "category" => "",
+    ],
+    [
+        'id' => 'script-src-cloudflare',
+        "label" => "Local embed",
+        "html" => [
+            '<p id="{{ id }}">This changes if cloudflare jquery loads</p>',
+            '<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>',
+        ],
+        'script' => [
+            'src' => 'assets/app.js@cloudflareJquery',
+        ],
+        "category" => "",
+    ],
+
+    [
+        'id' => 'script-src-jsdelivr',
+        "label" => "Script from jsdelivr",
+        "html" => [
+            '<p id="{{ id }}">This changes if jsdelivr d3 loads</p>',
+            '<script src="https://cdn.jsdelivr.net/npm/d3@5.9.2/dist/d3.min.js"></script>',
+        ],
+        'script' => [
+            'src' => 'assets/app.js@cdnD3',
         ],
         "category" => "",
     ],

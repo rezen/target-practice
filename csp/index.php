@@ -31,18 +31,14 @@ $csp = [
 
 
 // Content-Security-Policy-Report-Only:
-header("Content-Security-Policy-Report-Only: " . implode(";", $csp));
+// header("Content-Security-Policy-Report-Only: " . implode(";", $csp));
 header('Report-To: { "group": "csp","max_age": 10886400,"endpoints": [{ "url": "http://127.0.0.1:8000/report.php?from-report-to=1", "priority": 2 }] }');
 ?>
 <html>
   <head>
     <title>CSP</title>
     <script src="assets/app.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/core.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/d3@5.9.2/dist/d3.min.js"></script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css" />
+    <script src=""></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alfa+Slab+One" />
     <link rel="stylesheet" href="assets/app.css" />
   </head>
@@ -81,8 +77,8 @@ header('Report-To: { "group": "csp","max_age": 10886400,"endpoints": [{ "url": "
           <pre><?php echo trim(str_replace("&gt;&lt;", "&gt;&lt;", htmlentities($el['html']))); ?></pre>
           <?php if (isset($el['script']['src'])): ?>
             js: <?php echo $el['script']['src']; ?>
-            <pre><?php echo $el['script']['source']; ?></pre>
           <?php endif; ?>
+          <pre><?php echo @$el['script']['source']; ?></pre>
         </td>
         <td>
           <?php echo $el['category']; ?>
