@@ -1,27 +1,31 @@
-* {
+@import url('https://fonts.googleapis.com/css?family=Nixie+One');
+
+
+body {
   font-family: Arial, sans-serif;
+  margin:0;
+  padding:10px 20px;
 }
 
-style {
-  display: block;
-  background-color: #eee;
-  padding: 20px;
-  font-family: monospace;
+td {
+  padding: 6px 12px;
+  text-align: left;
 }
 
-script {
-  display: block;
-  background-color: #eee;
-  padding: 20px;
-  font-family: monospace;
+td pre {
+  padding:0;
+  text-align: left;
+  /*word-wrap: break-word;*/
+  max-width: 800px;
+  /*white-space: pre-line;*/
+  /*display:inline-block;*/
+  overflow: hidden;
 }
+
 
 .google-font{
   font-family: 'Alfa Slab One';
 }
-
-@import url('https://fonts.googleapis.com/css?family=Nixie+One');
-
 
 .google-font-too{
   font-family: 'Nixie One';

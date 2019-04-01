@@ -19,3 +19,13 @@ php -S 127.0.0.1:8000 -t ./
 - https://content-security-policy.com/
 - https://medium.com/kifi-engineering/dont-let-a-content-security-policy-your-extension-s-images-e062d6b88eac
 - https://github.com/nico3333fr/CSP-useful/tree/master/csp-for-third-party-services
+- https://github.com/w3c/webappsec-csp/issues/116
+- https://stripe.com/docs/security
+- http://www.cspplayground.com/compliant_examples
+- https://www.cspisawesome.com/
+- https://github.blog/2013-04-19-content-security-policy/
+- https://blog.sendsafely.com/retrofitting-code-for-content-security-policy
+- https://erlend.oftedal.no/blog/csp/readiness/
+- http://csptesting.herokuapp.com/
+- https://github.com/eoftedal/csp-testing
+- https://exploited.cz/xss/csp/strict.php
